@@ -5,6 +5,7 @@ import Reset from "./assets/global_styles/Reset.js";
 import RegisterPage from "./pages/RegisterPage/index.jsx";
 import { theme } from "./assets/themes/index.js";
 import { ThemeProvider } from "@mui/material";
+import LoginPage from "./pages/LoginPage/index.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/auth/sign-up" element={<RegisterPage />} />
+            <Route path="/auth/sign-in" element={<LoginPage />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

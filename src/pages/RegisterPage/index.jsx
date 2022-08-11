@@ -5,7 +5,7 @@ import api from "../../services/api.js";
 
 import watermelon from "../../../public/watermelon.svg";
 import { Form, TitleBox, Container } from "./style.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function RegisterPage() {
   const [register, SetRegister] = useState({
@@ -139,6 +139,11 @@ export default function RegisterPage() {
           )}
         </Button>
       </Form>
+      <Link to={"/auth/sign-in"}>
+        <Button sx={{ fontSize: 12 }} variant="text">
+          sign in
+        </Button>
+      </Link>
     </Container>
   );
 }
