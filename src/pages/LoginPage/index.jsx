@@ -1,7 +1,8 @@
 import { TextField, Button } from "@mui/material";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { TailSpin } from "react-loader-spinner";
 import api from "../../services/api.js";
+import UserContext from "../../contexts/UserContext.js";
 
 import watermelon from "../../../public/watermelon.svg";
 import { Form, TitleBox, Container } from "../RegisterPage/style.js";
@@ -14,6 +15,8 @@ export default function LoginPage() {
   });
 
   const [submited, SetSubmited] = useState(false);
+  const { SetUserInfo } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   function handleInput(e) {
@@ -30,8 +33,11 @@ export default function LoginPage() {
 
     const promisse = api.post("/auth/sign-in", { ...login });
 
-    promisse.then(() => {
-      navigate("/auth/sign-up");
+    promisse.then((obj) => {
+      const { data } = obj;
+      localStorage.setItem("UserInfo", JSON.stringify({ ...data }));
+      SetUserInfo({ token: data.token, name: data.name });
+      navigate("/info");
       return;
     });
 

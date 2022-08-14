@@ -84,7 +84,7 @@ export default function RegisterPage() {
           required
           error={errorText.name}
           helperText={errorText.name}
-        ></TextField>
+        />
         <TextField
           label="email"
           variant="outlined"
@@ -96,7 +96,7 @@ export default function RegisterPage() {
           required
           error={errorText.email}
           helperText={errorText.email}
-        ></TextField>
+        />
         <TextField
           label="password"
           variant="outlined"
@@ -108,7 +108,7 @@ export default function RegisterPage() {
           required
           error={errorText.password}
           helperText={errorText.password}
-        ></TextField>
+        />
         <TextField
           label="confirm password"
           variant="outlined"
@@ -120,7 +120,7 @@ export default function RegisterPage() {
           required
           error={errorText.confirmPassword}
           helperText={errorText.confirmPassword}
-        ></TextField>
+        />
         <Button
           variant="contained"
           color="secondary"
