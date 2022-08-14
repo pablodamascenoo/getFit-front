@@ -7,6 +7,7 @@ import { theme } from "./assets/themes/index.js";
 import { ThemeProvider } from "@mui/material";
 import LoginPage from "./pages/LoginPage/index.jsx";
 import InfoPage from "./pages/InfoPage/index.jsx";
+import HomePage from "./pages/HomePage/index.jsx";
 import UserContext from "./contexts/UserContext.js";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Route path="/auth/sign-up" element={<RegisterPage />} />
               <Route path="/auth/sign-in" element={<LoginPage />} />
               <Route path="/info" element={<InfoPage />} />
+              <Route path="/" element={<HomePage />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>

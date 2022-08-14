@@ -37,7 +37,7 @@ export default function LoginPage() {
       const { data } = obj;
       localStorage.setItem("UserInfo", JSON.stringify({ ...data }));
       SetUserInfo({ token: data.token, name: data.name });
-      navigate("/info");
+      navigate("/");
       return;
     });
 
