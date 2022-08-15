@@ -55,7 +55,7 @@ export default function HomePage() {
       <HomeHeader />
       <Container>
         <TitleBox>
-          <h2>Welcome back, {userInfo.name}!</h2>
+          <h2>Welcome back, {userInfo?.name}!</h2>
         </TitleBox>
         <GoalsProgress goals={goal} meals={meals} water={water} />
         <FoodDiv>
