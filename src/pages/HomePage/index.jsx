@@ -42,8 +42,8 @@ export default function HomePage() {
     });
 
     promisse.catch((error) => {
-      alert(error.response.data);
       if (error.response.status === 401) {
+        alert("session expired! sign-in to enter");
         navigate("/auth/sign-in");
         return;
       }
