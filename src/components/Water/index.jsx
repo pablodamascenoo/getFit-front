@@ -64,11 +64,11 @@ export default function Water({ water }) {
           return (
             <div className="water" key={index}>
               <p>
-                {cup.milliliters}ml{" "}
-                <span>{dayjs(cup.createdAt).format("HH:MM")}</span>
+                {cup?.milliliters}ml{" "}
+                <span>{dayjs(cup?.createdAt).format("HH:MM")}</span>
               </p>
               <p>
-                <DeleteIcon onClick={() => deleteItem(cup.id)} />
+                <DeleteIcon onClick={() => deleteItem(cup?.id)} />
               </p>
             </div>
           );

@@ -8,7 +8,7 @@ export default function HomeHeader() {
 
   return (
     <Header>
-      <p>Hi, {userInfo.name}</p>
+      <p>Hi, {userInfo?.name}</p>
       <MenuButton />
     </Header>
   );

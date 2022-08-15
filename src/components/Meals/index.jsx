@@ -65,12 +65,12 @@ export default function Meals({ meals }) {
           return (
             <div className="meal" key={index}>
               <p>
-                {meal.name}
+                {meal?.name}
                 <span>{dayjs(meal.createdAt).format("HH:MM")}</span>
               </p>
               <p>
-                {meal.calories}kcal
-                <DeleteIcon onClick={() => deleteItem(meal.id)} />
+                {meal?.calories}kcal
+                <DeleteIcon onClick={() => deleteItem(meal?.id)} />
               </p>
             </div>
           );
