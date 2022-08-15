@@ -4,16 +4,41 @@ import { Box } from "../Meals/style.js";
 import { Button } from "@mui/material";
 import dayjs from "dayjs";
 import ModalForm from "../ModalForm/index.jsx";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../../contexts/UserContext.js";
+import api from "../../services/api.js";
 
 export default function Water({ water }) {
   const [open, SetOpen] = useState(false);
+  const { userInfo } = useContext(UserContext);
 
   function handleClose() {
     SetOpen(false);
   }
   function handleOpen() {
     SetOpen(true);
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${userInfo?.token}`,
+    },
+  };
+
+  function deleteItem(id) {
+    const response = confirm("deseja excluir esse item?");
+
+    if (response) {
+      const promisse = api.delete(`/water/${id}`, config);
+
+      promisse.then(() => {
+        window.location.reload();
+      });
+
+      promisse.catch((error) => {
+        alert(error.response.data);
+      });
+    }
   }
   return (
     <Box>
@@ -43,7 +68,7 @@ export default function Water({ water }) {
                 <span>{dayjs(cup.createdAt).format("HH:MM")}</span>
               </p>
               <p>
-                <DeleteIcon />
+                <DeleteIcon onClick={() => deleteItem(cup.id)} />
               </p>
             </div>
           );

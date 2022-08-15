@@ -30,6 +30,11 @@ export const Box = styled.div`
     border-bottom: 2px solid #4e677e;
     max-height: 67px;
     overflow-y: scroll;
+
+    svg {
+      cursor: pointer;
+    }
+
     &::-webkit-scrollbar {
       display: none;
     }

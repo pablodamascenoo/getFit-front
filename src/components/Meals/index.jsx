@@ -4,16 +4,41 @@ import { Box } from "./style.js";
 import { Button } from "@mui/material";
 import dayjs from "dayjs";
 import ModalForm from "../ModalForm/index.jsx";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import api from "../../services/api.js";
+import UserContext from "../../contexts/UserContext.js";
 
 export default function Meals({ meals }) {
   const [open, SetOpen] = useState(false);
+  const { userInfo } = useContext(UserContext);
 
   function handleClose() {
     SetOpen(false);
   }
   function handleOpen() {
     SetOpen(true);
+  }
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${userInfo?.token}`,
+    },
+  };
+
+  function deleteItem(id) {
+    const response = confirm("deseja excluir esse item?");
+
+    if (response) {
+      const promisse = api.delete(`/meals/${id}`, config);
+
+      promisse.then(() => {
+        window.location.reload();
+      });
+
+      promisse.catch((error) => {
+        alert(error.response.data);
+      });
+    }
   }
 
   return (
@@ -45,7 +70,7 @@ export default function Meals({ meals }) {
               </p>
               <p>
                 {meal.calories}kcal
-                <DeleteIcon />
+                <DeleteIcon onClick={() => deleteItem(meal.id)} />
               </p>
             </div>
           );

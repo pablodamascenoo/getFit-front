@@ -24,7 +24,7 @@ export const Goals = styled.div`
   }
 
   p {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
 
   @media (max-width: 380px) {
