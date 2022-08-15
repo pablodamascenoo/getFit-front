@@ -8,6 +8,7 @@ import Water from "../../components/Water/index.jsx";
 
 import { Container, TitleBox } from "../RegisterPage/style.js";
 import { FoodDiv } from "./style.js";
+import HomeHeader from "../../components/Header/index.jsx";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -50,15 +51,18 @@ export default function HomePage() {
   }, []);
 
   return (
-    <Container>
-      <TitleBox>
-        <h2>Welcome back, {userInfo.name}!</h2>
-      </TitleBox>
-      <GoalsProgress goals={goal} meals={meals} water={water} />
-      <FoodDiv>
-        <Meals meals={meals} />
-        <Water water={water} />
-      </FoodDiv>
-    </Container>
+    <>
+      <HomeHeader />
+      <Container>
+        <TitleBox>
+          <h2>Welcome back, {userInfo.name}!</h2>
+        </TitleBox>
+        <GoalsProgress goals={goal} meals={meals} water={water} />
+        <FoodDiv>
+          <Meals meals={meals} />
+          <Water water={water} />
+        </FoodDiv>
+      </Container>
+    </>
   );
 }
