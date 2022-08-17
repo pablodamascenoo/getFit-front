@@ -43,6 +43,7 @@ export default function ModalForm({ open, handleClose, type }) {
   }
 
   function handleMealSubmit(e) {
+    e.preventDefault();
     SetSubmited(true);
 
     const promisse = api.post(
@@ -55,10 +56,16 @@ export default function ModalForm({ open, handleClose, type }) {
       alert(error.response.data);
     });
 
+    promisse.then(() => {
+      open = false;
+      window.location.reload();
+    });
+
     SetSubmited(false);
   }
 
   function handleWaterSubmit(e) {
+    e.preventDefault();
     SetSubmited(true);
 
     const promisse = api.post(
@@ -69,6 +76,11 @@ export default function ModalForm({ open, handleClose, type }) {
 
     promisse.catch((error) => {
       alert(error.response.data);
+    });
+
+    promisse.then(() => {
+      open = false;
+      window.location.reload();
     });
 
     SetSubmited(false);
